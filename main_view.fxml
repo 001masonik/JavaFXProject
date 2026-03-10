@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<SplitPane dividerPositions="0.35" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+    <items>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <Label text="Новий договір" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+
+            <Label text="Дата укладання:" />
+            <DatePicker fx:id="datePicker" prefWidth="Infinity" /> <Label text="Сума страхування:" />
+            <TextField fx:id="txtAmount" promptText="Введіть суму" onKeyReleased="#handleCalculatePremium" /> <Label text="Тарифна ставка (%):" />
+            <TextField fx:id="txtRate" promptText="Введіть ставку" onKeyReleased="#handleCalculatePremium" /> <Label text="Страхова премія:" />
+            <Label fx:id="lblPremium" text="0.00" style="-fx-text-fill: blue; -fx-font-weight: bold;" /> <Label text="Філія:" />
+            <ComboBox fx:id="comboBranch" prefWidth="Infinity" /> <Label text="Вид страхування:" />
+            <ComboBox fx:id="comboType" prefWidth="Infinity" /> <Button text="Зберегти договір" prefWidth="Infinity" onAction="#handleSaveContract" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+            <Button text="Експорт у .txt" prefWidth="Infinity" onAction="#handleExport" /> </VBox>
+
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <TextField fx:id="txtSearch" promptText="Пошук за номером договору..." HBox.hgrow="ALWAYS" /> <ComboBox fx:id="comboFilterBranch" promptText="Фільтр філії" /> </HBox>
+
+            <TableView fx:id="tableContracts" VBox.vgrow="ALWAYS"> <columns>
+                <TableColumn fx:id="colId" text="№" prefWidth="50" />
+                <TableColumn fx:id="colDate" text="Дата" prefWidth="100" />
+                <TableColumn fx:id="colAmount" text="Сума" prefWidth="120" />
+                <TableColumn fx:id="colRate" text="Ставка" prefWidth="80" />
+                <TableColumn fx:id="colBranch" text="Філія" prefWidth="150" />
+                <TableColumn fx:id="colType" text="Вид" prefWidth="150" />
+            </columns>
+            </TableView>
+        </VBox>
+    </items>
+</SplitPane>
